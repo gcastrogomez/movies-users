@@ -2,7 +2,7 @@
 API en Node.js (Express JS) donde un usuario puede registrarse, identificarse y gestionar sus películas.
 
 ## Running movies-users locally
-Es una aplicación backend construida con node que permite crear, actualizar, eliminar y listar películas por parte del usuario. A su vez, también permite que un administrador pueda crear, actualizar, eliminar o listar usuarios.
+Es una aplicación backend construida con node que permite crear, actualizar, eliminar y listar películas por parte del usuario. A su vez, también permite que un usuario pueda crear, actualizar o listar usuarios. El administrador será el único que pueda borrar usuarios.
 Debemos crear una base de datos con MongoDB, podemos utilizar MongoDB Compass y configurar un archivo ".env", como ejemplo tenemos el archivo "envexample".
 Tras crear la base de datos, podemos levantar la API con los siguientes comandos:
 
@@ -15,6 +15,53 @@ node app
 
 La aplicación es puro backend, por lo que tendremos que consumir los servicios mediante postman o algún cliente similar. No olvidemos generar un token y añadirlo en los Headers en cada una de nuestras peticiones.
 
+Crear un usuario:
+```
+curl --location --request POST 'http://localhost:8080/api/usuarios' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nombre": "test4",
+    "google": true,
+    "nuevocampo": true,
+    "correo": "test4@test.com",
+    "password": "123456",
+    "rol": "ADMIN_ROLE"
+}'
+```
+
+Listar usuarios:
+```
+curl --location --request GET 'http://localhost:8080/api/usuarios?limite=5&desde=0'
+```
+
+Actualizar un usuario:
+```
+curl --location --request PUT 'http://localhost:8080/api/usuarios/63f527702c5bd565b213b31c' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "nombre": "test5",
+    "google": true,
+    "correo": "test4@test.com",
+    "password": "123456",
+    "rol": "ADMIN_ROLE"
+}'
+```
+Login de un usuario:
+```
+curl --location --request POST 'http://localhost:8080/api/auth/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "correo": "test4@test.com",
+    "password": "123456"
+}'
+```
+Borrar un empleado:
+```
+curl --location --request DELETE 'http://localhost:8080/api/usuarios/63e4e15f0500dd60820819b0' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2Y1Mjc3MDJjNWJkNTY1YjIxM2IzMWMiLCJpYXQiOjE2NzcwMTEzMTAsImV4cCI6MTY3NzAyNTcxMH0.c7toO1sxDpA3yUNb1bn6xUO1JB0ZLsaSP9P-o7E-Xuc' \
+--data-raw ''
+```
+
 Crear una película:
 
 ```
@@ -26,8 +73,6 @@ curl --location --request POST 'http://localhost:8080/api/peliculas' \
     "nombre": "INTERSTELLAR",
     "estreno": 2014,
     "portada": "https://pics.filmaffinity.com/Interstellar-306936708-large.jpg",
-    "fechaCreacion": "2023-02-21T19:41:13.242Z",
-    "fechaActualizacion": "2023-02-21T19:41:13.242Z",
     "categoria": [
         "Accion",
         "Fantasia",
