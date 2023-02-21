@@ -19,6 +19,7 @@ Crear una película:
 
 ```
 curl --location --request POST 'http://localhost:8080/api/peliculas' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2U0ZTUzZGNjMjMzNTQ2YjI0ZjEzM2UiLCJpYXQiOjE2NzcwMDgzNTgsImV4cCI6MTY3NzAyMjc1OH0.ohgy6fI60z8GqwJkmNV3UI4ly8nCD8bg8ivoC2_Qykk' \
 	--header 'Content-Type: application/json' \
 	--data-raw '{
     "usuario": "63e4e53dcc233546b24f133e",
@@ -38,15 +39,18 @@ curl --location --request POST 'http://localhost:8080/api/peliculas' \
 
 Listar películas:
 ```
-curl --location --request GET 'http://localhost:8080/api/peliculas' 
+curl --location --request GET 'http://localhost:8080/api/peliculas' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2U0ZTUzZGNjMjMzNTQ2YjI0ZjEzM2UiLCJpYXQiOjE2NzcwMDgzNTgsImV4cCI6MTY3NzAyMjc1OH0.ohgy6fI60z8GqwJkmNV3UI4ly8nCD8bg8ivoC2_Qykk' 
 ```
 Obtener película por id:
 ```
-curl --location --request GET 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a' 
+curl --location --request GET 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2U0ZTUzZGNjMjMzNTQ2YjI0ZjEzM2UiLCJpYXQiOjE2NzcwMDgzNTgsImV4cCI6MTY3NzAyMjc1OH0.ohgy6fI60z8GqwJkmNV3UI4ly8nCD8bg8ivoC2_Qykk' 
 ```
 Modificar película por id:
 ```
-curl --location --request PUT 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a'
+curl --location --request PUT 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2U0ZTUzZGNjMjMzNTQ2YjI0ZjEzM2UiLCJpYXQiOjE2NzY5OTkyMDYsImV4cCI6MTY3NzAxMzYwNn0.FESNX64ATXNXmRNnqrCpt5fIuTnDn9OpEYarTf-iRYM' \
 	--header 'Content-Type: application/json' \
 	--data-raw '{
     "nombre": "Interstellar",
@@ -60,5 +64,6 @@ curl --location --request PUT 'http://localhost:8080/api/peliculas/63f51e593c681
 ```
 Eliminar una pelicula (borrado lógico):
 ```
-    curl --location --request DELETE 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a'
+    curl --location --request DELETE 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a' \
+--header 'x-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2M2U0ZTUzZGNjMjMzNTQ2YjI0ZjEzM2UiLCJpYXQiOjE2NzY5OTkyMDYsImV4cCI6MTY3NzAxMzYwNn0.FESNX64ATXNXmRNnqrCpt5fIuTnDn9OpEYarTf-iRYM'
 ```
