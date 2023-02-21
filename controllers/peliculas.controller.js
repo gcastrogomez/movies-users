@@ -8,7 +8,7 @@ const peliculasGet =  async(req = request, res = response) => {
     const payload = jwtDecode(token);
     const userId = payload.uid;
     const {categoria, nombre} = req.query;
-    const query = {estado: true, usuario: userId, nombre: nombre.toUpperCase()};
+    const query = {estado: true, usuario: userId};
     const [peliculas] = await Promise.all([
         Pelicula.find(query)
             .populate('usuario', 'nombre')
