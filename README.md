@@ -17,6 +17,7 @@ La aplicación es puro backend, por lo que tendremos que consumir los servicios 
 
 Crear una película:
 
+```
 curl --location --request POST 'http://localhost:8080/api/peliculas' \
 	--header 'Content-Type: application/json' \
 	--data-raw '{
@@ -33,17 +34,18 @@ curl --location --request POST 'http://localhost:8080/api/peliculas' \
     ],
     "_id": "63f51e593c681ffaaa41c10a"
 }
+```
 
 Listar películas:
-
+```
 curl --location --request GET 'http://localhost:8080/api/peliculas' 
-
+```
 Obtener película por id:
-
+```
 curl --location --request GET 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a' 
-
+```
 Modificar película por id:
-
+```
 curl --location --request PUT 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a'
 	--header 'Content-Type: application/json' \
 	--data-raw '{
@@ -55,7 +57,8 @@ curl --location --request PUT 'http://localhost:8080/api/peliculas/63f51e593c681
     "estreno": 2014,
     "portada": "https://pics.filmaffinity.com/Interstellar-306936708-large.jpg"
 }
-
+```
 Eliminar una pelicula (borrado lógico):
-
+```
     curl --location --request DELETE 'http://localhost:8080/api/peliculas/63f51e593c681ffaaa41c10a'
+```
